@@ -543,79 +543,264 @@
 
         <!-- REGLEMENT -->
 
-        <section id="reglement">
-            <div class="conteneur">
+       
+<section class="reglement-astro">
+  <style>
+    .reglement-astro {
+      --violet: #a78bfa;
+      --fond: #171722;
+      --bordure: #343344;
+      --texte: #b6b1c8;
+      color: #f3f0ff;
+      font-family: Arial, sans-serif;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
 
-                <h2 class="titre-section">
-                    Le <span class="degrade">règlement</span>
-                </h2>
+    .reglement-astro * {
+      box-sizing: border-box;
+    }
 
-                <p class="description-section">
-                    Quelques règles simples pour que tout le monde
-                    puisse profiter du serveur.
-                </p>
+    .barre-reglement {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px;
+      background: #151522;
+      border: 1px solid #51406f;
+      border-radius: 18px;
+      margin-bottom: 24px;
+    }
 
-                <div class="regles">
+    .icone-reglement {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: #30234b;
+      font-size: 28px;
+    }
 
-                    <div class="regle">
-                        <span class="numero">01</span>
-                        <div>
-                            <strong>Respect mutuel</strong>
-                            <p>
-                                Respecte les autres membres.
-                                Les insultes ciblées et le harcèlement
-                                n'ont pas leur place ici.
-                            </p>
-                        </div>
-                    </div>
+    .barre-reglement h1,
+    .barre-reglement h2 {
+      margin: 0 0 8px;
+      color: #e8ddff;
+    }
 
-                    <div class="regle">
-                        <span class="numero">02</span>
-                        <div>
-                            <strong>Pas de spam</strong>
-                            <p>
-                                Évite les messages répétitifs,
-                                le flood et les publicités non autorisées.
-                            </p>
-                        </div>
-                    </div>
+    .barre-reglement p {
+      margin: 0;
+      color: var(--texte);
+      line-height: 1.6;
+    }
 
-                    <div class="regle">
-                        <span class="numero">03</span>
-                        <div>
-                            <strong>Respecte les salons</strong>
-                            <p>
-                                Utilise chaque salon pour son objectif
-                                et respecte les consignes du staff.
-                            </p>
-                        </div>
-                    </div>
+    .grille-reglement {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
 
-                    <div class="regle">
-                        <span class="numero">04</span>
-                        <div>
-                            <strong>Respecte les règles de Discord</strong>
-                            <p>
-                                Les conditions d'utilisation de Discord
-                                s'appliquent également sur notre serveur.
-                            </p>
-                        </div>
-                    </div>
+    .carre-reglement {
+      min-height: 142px;
+      padding: 18px;
+      background: var(--fond);
+      border: 1px solid var(--bordure);
+      border-radius: 14px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
 
-                    <div class="regle">
-                        <span class="numero">05</span>
-                        <div>
-                            <strong>Amuse-toi !</strong>
-                            <p>
-                                Participe, échange et contribue
-                                à garder une bonne ambiance.
-                            </p>
-                        </div>
-                    </div>
+    .carre-reglement:hover {
+      border-color: var(--violet);
+      transform: translateY(-2px);
+    }
 
-                </div>
-            </div>
-        </section>
+    .entete-categorie {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 12px;
+    }
+
+    .icone-categorie {
+      font-size: 21px;
+    }
+
+    .numero-categorie {
+      color: var(--violet);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .carre-reglement h3 {
+      margin: 0 0 9px;
+      font-size: 17px;
+      color: #f3f0ff;
+    }
+
+    .carre-reglement p {
+      margin: 0;
+      color: var(--texte);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .fin-reglement {
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 600px) {
+      .reglement-astro {
+        padding: 12px;
+      }
+
+      .grille-reglement {
+        grid-template-columns: 1fr;
+      }
+
+      .barre-reglement {
+        padding: 18px;
+      }
+    }
+  </style>
+
+  <!-- Grande barre du haut -->
+  <header class="barre-reglement">
+    <div class="icone-reglement">🛡️</div>
+    <div>
+      <h1>Règlement général</h1>
+      <p>Les règles à respecter par tous les membres d'ASTRO.</p>
+    </div>
+  </header>
+
+  <!-- Les 12 catégories -->
+  <div class="grille-reglement">
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">👥</span>
+        <span class="numero-categorie">01</span>
+      </div>
+      <h3>Respect</h3>
+      <p>Préserver une bonne ambiance et traiter chaque membre avec respect.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">👤</span>
+        <span class="numero-categorie">02</span>
+      </div>
+      <h3>Profil et identité</h3>
+      <p>Garder un profil correct et ne pas usurper l'identité d'autrui.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">🔒</span>
+        <span class="numero-categorie">03</span>
+      </div>
+      <h3>Données personnelles</h3>
+      <p>Protéger la vie privée et les informations confidentielles de chacun.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">💬</span>
+        <span class="numero-categorie">04</span>
+      </div>
+      <h3>Spam et publicité</h3>
+      <p>Éviter les messages répétitifs, mentions abusives et publicités non autorisées.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">🛡️</span>
+        <span class="numero-categorie">05</span>
+      </div>
+      <h3>Contenu interdit</h3>
+      <p>Exclure les contenus sexuels explicites, gore et particulièrement choquants.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">🎧</span>
+        <span class="numero-categorie">06</span>
+      </div>
+      <h3>Salons vocaux</h3>
+      <p>Permettre à chacun de discuter en vocal sans perturbations volontaires.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">©️</span>
+        <span class="numero-categorie">07</span>
+      </div>
+      <h3>Contenu protégé</h3>
+      <p>Respecter les droits d'auteur et les autorisations de diffusion.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">🚫</span>
+        <span class="numero-categorie">08</span>
+      </div>
+      <h3>Arnaques et fraudes</h3>
+      <p>Prévenir les escroqueries, liens frauduleux et tentatives de vol de comptes.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">🛡️</span>
+        <span class="numero-categorie">09</span>
+      </div>
+      <h3>Équipe du staff</h3>
+      <p>Comprendre le rôle de l'équipe et savoir comment demander son aide.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">📢</span>
+        <span class="numero-categorie">10</span>
+      </div>
+      <h3>Rumeurs et désinformation</h3>
+      <p>Éviter les fausses informations et les accusations destinées à nuire.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">⚖️</span>
+        <span class="numero-categorie">11</span>
+      </div>
+      <h3>Sanctions et récidive</h3>
+      <p>Présenter les sanctions possibles et les conséquences en cas de récidive.</p>
+    </article>
+
+    <article class="carre-reglement">
+      <div class="entete-categorie">
+        <span class="icone-categorie">📘</span>
+        <span class="numero-categorie">12</span>
+      </div>
+      <h3>Règles de Discord</h3>
+      <p>Respecter également les conditions d'utilisation et les règles officielles de Discord.</p>
+    </article>
+
+  </div>
+
+  <!-- Grande barre de fin -->
+  <footer class="barre-reglement fin-reglement">
+    <div class="icone-reglement">📌</div>
+    <div>
+      <h2>Merci d'avoir lu le règlement !</h2>
+      <p>
+        En restant sur le serveur ASTRO, vous acceptez ce règlement
+        ainsi que les règles officielles de Discord.
+      </p>
+    </div>
+  </footer>
+</section>
 
         <!-- EQUIPE -->
 
