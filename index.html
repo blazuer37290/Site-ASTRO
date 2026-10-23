@@ -4,105 +4,704 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTRO</title>
+
+    <title>ASTRO — Notre communauté</title>
+    <meta name="theme-color" content="#090914">
+    <meta name="description" content="Bienvenue chez ASTRO, découvre notre communauté Discord !">
 
     <style>
-        body {
-            background: #232428;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
+        /* BASE DU SITE */
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
+        :root {
+            --fond: #090914;
+            --carte: #111222;
+            --violet: #8b5cf6;
+            --bleu: #5865f2;
+            --cyan: #49dfff;
+            --texte: #f5f3ff;
+            --secondaire: #a4a4bd;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--fond);
+            color: var(--texte);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* FOND LUMINEUX */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(
+                    ellipse at 15% 15%,
+                    rgba(91, 55, 190, 0.19),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    ellipse at 85% 40%,
+                    rgba(40, 100, 240, 0.13),
+                    transparent 38%
+                ),
+                radial-gradient(
+                    ellipse at 50% 100%,
+                    rgba(135, 50, 220, 0.12),
+                    transparent 40%
+                );
+        }
+
+        /* BARRE DE NAVIGATION */
+
         header {
-            background: #5865F2;
-            padding: 25px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(9, 9, 20, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
         }
 
         nav {
-            background: #18191c;
-            padding: 15px;
+            max-width: 1100px;
+            margin: auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
         }
 
-        nav a {
-            color: white;
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 4px;
             text-decoration: none;
-            margin: 10px;
+            color: white;
+            text-shadow: 0 0 18px var(--violet);
         }
 
-        section {
-            padding: 40px 20px;
+        .liens {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .liens a {
+            text-decoration: none;
+            color: var(--secondaire);
+            font-size: 14px;
+            transition: color 0.25s;
+        }
+
+        .liens a:hover {
+            color: white;
+            text-shadow: 0 0 12px var(--cyan);
+        }
+
+        /* GRANDE PRESENTATION */
+
+        .hero {
+            min-height: 590px;
+            padding: 110px 24px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .etiquette {
+            display: inline-block;
+            padding: 7px 16px;
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            border-radius: 50px;
+            background: rgba(139, 92, 246, 0.09);
+            color: #c4b5fd;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 24px 0 8px;
+            font-size: clamp(60px, 12vw, 115px);
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: linear-gradient(
+                110deg,
+                #ffffff,
+                #b8a4ff,
+                #60dfff,
+                #ffffff
+            );
+            background-size: 200% auto;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: lumiere 6s linear infinite;
+            filter: drop-shadow(0 0 25px rgba(139, 92, 246, 0.28));
+        }
+
+        .hero p {
+            max-width: 570px;
+            margin: 20px auto 30px;
+            color: var(--secondaire);
+            font-size: 17px;
+        }
+
+        /* BOUTONS */
+
+        .boutons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
         .bouton {
             display: inline-block;
-            background: #5865F2;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 13px 24px;
+            border-radius: 10px;
             text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .bouton:hover {
+            transform: translateY(-4px);
+        }
+
+        .principal {
+            color: white;
+            background: linear-gradient(110deg, #6845e8, #5865f2);
+            box-shadow: 0 0 25px rgba(104, 69, 232, 0.35);
+        }
+
+        .principal:hover {
+            box-shadow: 0 0 35px rgba(104, 69, 232, 0.65);
+        }
+
+        .secondaire {
+            border: 1px solid #34344d;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .secondaire:hover {
+            border-color: var(--violet);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 75px 24px;
+            scroll-margin-top: 75px;
+        }
+
+        .conteneur {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .titre-section {
+            margin: 0 0 10px;
+            font-size: clamp(28px, 5vw, 40px);
+            text-align: center;
+        }
+
+        .description-section {
+            color: var(--secondaire);
+            text-align: center;
+            margin: 0 auto 38px;
+            max-width: 600px;
+        }
+
+        .degrade {
+            color: #b6a0ff;
+        }
+
+        /* CARTES */
+
+        .grille {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
         }
 
         .carte {
-            background: #313338;
-            padding: 20px;
-            margin: 15px auto;
-            border-radius: 10px;
-            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            padding: 28px;
+            border: 1px solid #272741;
+            border-radius: 18px;
+            background: linear-gradient(
+                145deg,
+                rgba(25, 25, 48, 0.95),
+                rgba(14, 14, 29, 0.95)
+            );
+            transition: transform 0.3s, border-color 0.3s,
+                        box-shadow 0.3s;
+        }
+
+        .carte:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.7);
+            box-shadow: 0 10px 35px rgba(99, 65, 210, 0.12);
+        }
+
+        .icone {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            font-size: 23px;
+            background: rgba(139, 92, 246, 0.14);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+        }
+
+        .carte h3 {
+            margin: 0 0 10px;
+            font-size: 19px;
+        }
+
+        .carte p {
+            color: var(--secondaire);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* REGLEMENT */
+
+        .regles {
+            max-width: 700px;
+            margin: auto;
+            display: grid;
+            gap: 12px;
+        }
+
+        .regle {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px 20px;
+            border: 1px solid #272741;
+            border-radius: 12px;
+            background: rgba(20, 20, 39, 0.8);
+            transition: border-color 0.25s;
+        }
+
+        .regle:hover {
+            border-color: var(--violet);
+        }
+
+        .numero {
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        .regle p {
+            margin: 0;
+            color: var(--secondaire);
+        }
+
+        /* EQUIPE */
+
+        .carte-staff {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 18px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            font-size: 29px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #7146ed, #3498ff);
+            box-shadow: 0 0 25px rgba(115, 75, 240, 0.25);
+        }
+
+        .role {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 4px 12px;
+            border-radius: 50px;
+            background: rgba(139, 92, 246, 0.13);
+            color: #c4b5fd;
+            font-size: 12px;
+        }
+
+        /* REJOINDRE */
+
+        .rejoindre {
+            padding: 55px 25px;
+            text-align: center;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 22px;
+            background:
+                radial-gradient(
+                    ellipse at top,
+                    rgba(106, 69, 225, 0.18),
+                    transparent 70%
+                ),
+                #101020;
+        }
+
+        .rejoindre h2 {
+            font-size: clamp(26px, 5vw, 38px);
+            margin: 0 0 12px;
+        }
+
+        .rejoindre p {
+            color: var(--secondaire);
+            margin: 0 auto 25px;
+        }
+
+        /* PIED DE PAGE */
+
+        footer {
+            padding: 28px 20px;
+            text-align: center;
+            border-top: 1px solid #222239;
+            color: #77778f;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #b6a0ff;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes lumiere {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+
+        /* TELEPHONES ET PETITS ECRANS */
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .liens {
+                justify-content: center;
+                gap: 17px;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding-top: 75px;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+
+            .grille {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 18px;
+            }
+
+            .carte {
+                padding: 24px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- NAVIGATION -->
+
     <header>
-        <h1>Mon serveur Discord</h1>
-        <p>Bienvenue dans notre communauté !</p>
+        <nav>
+            <a class="logo" href="#accueil">ASTRO</a>
+
+            <div class="liens">
+                <a href="#accueil">Accueil</a>
+                <a href="#decouvrir">Découvrir</a>
+                <a href="#reglement">Règlement</a>
+                <a href="#equipe">Équipe</a>
+            </div>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#reglement">Règlement</a>
-        <a href="#equipe">Équipe</a>
-    </nav>
+    <main>
 
-    <section id="accueil">
-        <h2>Bienvenue !</h2>
-        <p>Découvre notre serveur Discord et rejoins notre communauté.</p>
+        <!-- ACCUEIL -->
 
-        <a class="bouton" href="https://discord.com/Hagz3kN2uJ" target="_blank" rel="noopener noreferrer">
-            Rejoindre Discord
-        </a>
-    </section>
+        <section class="hero" id="accueil">
+            <span class="etiquette">✦ Bienvenue dans notre univers</span>
 
-    <section id="reglement">
-        <h2>Règlement</h2>
+            <h1>ASTRO</h1>
 
-        <div class="carte">
-            <p>1. Respecte les autres membres.</p>
-            <p>2. Pas de spam.</p>
-            <p>3. Respecte les règles de Discord.</p>
-            <p>4. Amuse-toi et reste sympa !</p>
-        </div>
-    </section>
+            <p>
+                Bien plus qu'un serveur Discord :
+                un univers pour discuter, partager,
+                rencontrer de nouvelles personnes et s'amuser ensemble.
+            </p>
 
-    <section id="equipe">
-        <h2>Notre équipe</h2>
+            <div class="boutons">
+                <a
+                    class="bouton principal"
+                    href="https://discord.gg/dJCNhRNjs2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ✦ Rejoindre le Discord
+                </a>
 
-        <div class="carte">
-            <h3>Administrateur</h3>
-            <p>Responsable du serveur.</p>
-        </div>
+                <a class="bouton secondaire" href="#decouvrir">
+                    Découvrir le serveur ↓
+                </a>
+            </div>
+        </section>
 
-        <div class="carte">
-            <h3>Modérateurs</h3>
-            <p>Ils veillent au respect du règlement.</p>
-        </div>
-    </section>
+        <!-- PRESENTATION -->
+
+        <section id="decouvrir">
+            <div class="conteneur">
+
+                <h2 class="titre-section">
+                    Découvre <span class="degrade">ASTRO</span>
+                </h2>
+
+                <p class="description-section">
+                    Un espace communautaire pour se retrouver,
+                    échanger et passer de bons moments.
+                </p>
+
+                <div class="grille">
+
+                    <article class="carte">
+                        <div class="icone">🌌</div>
+                        <h3>Une communauté</h3>
+                        <p>
+                            Discute avec les membres, partage tes passions
+                            et fais de nouvelles rencontres.
+                        </p>
+                    </article>
+
+                    <article class="carte">
+                        <div class="icone">💬</div>
+                        <h3>Des échanges</h3>
+                        <p>
+                            Participe aux conversations et profite
+                            d'un espace convivial.
+                        </p>
+                    </article>
+
+                    <article class="carte">
+                        <div class="icone">✨</div>
+                        <h3>Une bonne ambiance</h3>
+                        <p>
+                            Respect, entraide et bonne humeur :
+                            chacun contribue à la vie du serveur.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- REGLEMENT -->
+
+        <section id="reglement">
+            <div class="conteneur">
+
+                <h2 class="titre-section">
+                    Le <span class="degrade">règlement</span>
+                </h2>
+
+                <p class="description-section">
+                    Quelques règles simples pour que tout le monde
+                    puisse profiter du serveur.
+                </p>
+
+                <div class="regles">
+
+                    <div class="regle">
+                        <span class="numero">01</span>
+                        <div>
+                            <strong>Respect mutuel</strong>
+                            <p>
+                                Respecte les autres membres.
+                                Les insultes ciblées et le harcèlement
+                                n'ont pas leur place ici.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="regle">
+                        <span class="numero">02</span>
+                        <div>
+                            <strong>Pas de spam</strong>
+                            <p>
+                                Évite les messages répétitifs,
+                                le flood et les publicités non autorisées.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="regle">
+                        <span class="numero">03</span>
+                        <div>
+                            <strong>Respecte les salons</strong>
+                            <p>
+                                Utilise chaque salon pour son objectif
+                                et respecte les consignes du staff.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="regle">
+                        <span class="numero">04</span>
+                        <div>
+                            <strong>Respecte les règles de Discord</strong>
+                            <p>
+                                Les conditions d'utilisation de Discord
+                                s'appliquent également sur notre serveur.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="regle">
+                        <span class="numero">05</span>
+                        <div>
+                            <strong>Amuse-toi !</strong>
+                            <p>
+                                Participe, échange et contribue
+                                à garder une bonne ambiance.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EQUIPE -->
+
+        <section id="equipe">
+            <div class="conteneur">
+
+                <h2 class="titre-section">
+                    Notre <span class="degrade">équipe</span>
+                </h2>
+
+                <p class="description-section">
+                    Les personnes qui participent à la gestion
+                    et au bon fonctionnement du serveur.
+                </p>
+
+                <div class="grille">
+
+                    <article class="carte carte-staff">
+                        <div class="avatar">A</div>
+                        <h3>Administrateur</h3>
+                        <p>
+                            Gère le serveur et veille
+                            à son bon fonctionnement.
+                        </p>
+                        <span class="role">Administration</span>
+                    </article>
+
+                    <article class="carte carte-staff">
+                        <div class="avatar">M</div>
+                        <h3>Modérateurs</h3>
+                        <p>
+                            Aident les membres et veillent
+                            au respect du règlement.
+                        </p>
+                        <span class="role">Modération</span>
+                    </article>
+
+                    <article class="carte carte-staff">
+                        <div class="avatar">?</div>
+                        <h3>Le staff</h3>
+                        <p>
+                            Une équipe présente pour aider
+                            et accompagner la communauté.
+                        </p>
+                        <span class="role">Équipe</span>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- INVITATION -->
+
+        <section>
+            <div class="conteneur">
+                <div class="rejoindre">
+
+                    <h2>Prêt à rejoindre <span class="degrade">ASTRO</span> ?</h2>
+
+                    <p>
+                        Notre communauté t'attend.
+                        Clique ci-dessous pour nous rejoindre sur Discord.
+                    </p>
+
+                    <a
+                        class="bouton principal"
+                        href="https://discord.gg/dJCNhRNjs2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Rejoindre la communauté →
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIED DE PAGE -->
 
     <footer>
-        <p>Mon serveur Discord - 2026</p>
+        <p>
+            <strong>ASTRO</strong> · Fait avec passion pour la communauté.
+        </p>
+        <p>© 2026 ASTRO — Tous droits réservés.</p>
     </footer>
 
 </body>
